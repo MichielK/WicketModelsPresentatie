@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
 
 import com.google.common.base.Stopwatch;
 
@@ -29,8 +30,9 @@ public class DynamischModelValkuilPage extends BasePage
 
 	private void addListView()
 	{
+		IModel< ? extends List<String>> dynamischModel = this::getStringList;
 
-		add(new ListView<String>("demoListView", this::getStringList)
+		add(new ListView<String>("demoListView", dynamischModel)
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -58,7 +60,7 @@ public class DynamischModelValkuilPage extends BasePage
 		return list;
 	}
 
-	// Simuleer een zware operatie zoals een berekening of een database-call
+	// Simuleer een zware operatie zoals een berekening of een "zware" database-call
 	private void doeZwareOperatie()
 	{
 		try
