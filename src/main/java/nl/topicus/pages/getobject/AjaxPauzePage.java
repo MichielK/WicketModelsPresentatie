@@ -1,6 +1,6 @@
-package nl.topicus.pages;
+package nl.topicus.pages.getobject;
 
-import nl.topicus.BasePage;
+import nl.topicus.pages.BasePage;
 
 public class AjaxPauzePage extends BasePage
 {

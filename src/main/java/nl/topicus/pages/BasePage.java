@@ -1,4 +1,4 @@
-package nl.topicus;
+package nl.topicus.pages;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;

@@ -1,4 +1,4 @@
-package nl.topicus.pages;
+package nl.topicus.pages.getobject;
 
 import java.util.Random;
 
@@ -9,7 +9,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import nl.topicus.BasePage;
+import nl.topicus.pages.BasePage;
 
 public class FunctionalInterfacePage extends BasePage
 {
@@ -51,6 +51,11 @@ public class FunctionalInterfacePage extends BasePage
 		addClickBehaviour();
 	}
 
+	private String getRandom()
+	{
+		return Integer.toString(new Random().nextInt());
+	}
+
 	private void addClickBehaviour()
 	{
 		WebMarkupContainer wmc = new WebMarkupContainer("clickContainer");
@@ -75,11 +80,6 @@ public class FunctionalInterfacePage extends BasePage
 	@Override
 	protected Class< ? extends BasePage> getNextPageClass()
 	{
-		return null;
-	}
-
-	private String getRandom()
-	{
-		return Integer.toString(new Random().nextInt());
+		return DynamischModelWrapUpPage.class;
 	}
 }

@@ -4,7 +4,7 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import nl.topicus.pages.HomePage;
+import nl.topicus.pages.getobject.HomePage;
 
 /**
  * Simple test using the WicketTester

@@ -1,4 +1,4 @@
-package nl.topicus.pages;
+package nl.topicus.pages.getobject;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 
-import nl.topicus.BasePage;
+import nl.topicus.pages.BasePage;
 
 public class DynamischModelPage extends BasePage
 {
@@ -17,6 +17,7 @@ public class DynamischModelPage extends BasePage
 	private Label statischLabel, dynamischLabel;
 
 	@Override
+	// onInitialize wordt eenmalig bij het initialiseren van de pagina aangeroepen
 	protected void onInitialize()
 	{
 		super.onInitialize();
@@ -31,7 +32,7 @@ public class DynamischModelPage extends BasePage
 		String random = getRandom();
 		add(statischLabel = new Label("statischLabel", Model.of(random)));
 
-		// Ajax is dus: vervang een deel van de HTML.
+		// Ajax is dus: vervang dynamisch een deel van de HTML.
 		// Wicket gebruikt bij het vervangen van het component in de browser het markup-id. Om dit
 		// te laten werken moet Wicket wel het ID opnemen in het HTML-element.
 		statischLabel.setOutputMarkupId(true);

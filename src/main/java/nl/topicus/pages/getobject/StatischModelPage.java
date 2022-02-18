@@ -1,11 +1,11 @@
-package nl.topicus.pages;
+package nl.topicus.pages.getobject;
 
 import java.util.Random;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 
-import nl.topicus.BasePage;
+import nl.topicus.pages.BasePage;
 
 public class StatischModelPage extends BasePage
 {
