@@ -1,4 +1,4 @@
-package nl.topicus.wicketcopy;
+package nl.topicus.misc.model;
 
 import org.apache.wicket.model.IDetachable;
 
