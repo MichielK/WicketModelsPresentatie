@@ -1,18 +1,9 @@
 package nl.topicus.misc.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.wicket.model.IDetachable;
 import org.apache.wicket.model.IObjectClassAwareModel;
-import org.apache.wicket.model.util.CollectionModel;
-import org.apache.wicket.model.util.ListModel;
-import org.apache.wicket.model.util.MapModel;
-import org.apache.wicket.model.util.SetModel;
 import org.apache.wicket.util.lang.Objects;
 
 public class Model<T extends Serializable> implements IObjectClassAwareModel<T>
@@ -21,13 +12,9 @@ public class Model<T extends Serializable> implements IObjectClassAwareModel<T>
 
 	private T object;
 
-	public Model()
-	{
-	}
-
 	public Model(T object)
 	{
-		setObject(object);
+		this.object = object;
 	}
 
 	public static <T extends Serializable> Model<T> of(T object)
@@ -52,7 +39,7 @@ public class Model<T extends Serializable> implements IObjectClassAwareModel<T>
 	{
 		if (object instanceof IDetachable)
 		{
-			((IDetachable)object).detach();
+			((IDetachable) object).detach();
 		}
 	}
 
@@ -78,11 +65,11 @@ public class Model<T extends Serializable> implements IObjectClassAwareModel<T>
 		{
 			return true;
 		}
-		if (!(obj instanceof Model<?>))
+		if (!(obj instanceof Model< ? >))
 		{
 			return false;
 		}
-		Model<?> that = (Model<?>)obj;
+		Model< ? > that = (Model< ? >) obj;
 		return Objects.equal(object, that.object);
 	}
 
