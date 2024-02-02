@@ -34,7 +34,7 @@ public class DynamischModelPage extends BasePage
 
 		// Ajax is dus: vervang dynamisch een deel van de HTML.
 		// Wicket gebruikt bij het vervangen van het component in de browser het markup-id. Om dit
-		// te laten werken moet Wicket wel het ID opnemen in het HTML-element.
+		// te laten werken moet Wicket wel het markup-id opnemen in het HTML-element.
 		statischLabel.setOutputMarkupId(true);
 	}
 
@@ -44,6 +44,8 @@ public class DynamischModelPage extends BasePage
 		{
 			private static final long serialVersionUID = 1L;
 
+			// Elke keer dat het object gerenderd wordt, word de getObject-methode van het model
+			// aangeroepen door het component (in dit geval een label-component)
 			@Override
 			public String getObject()
 			{

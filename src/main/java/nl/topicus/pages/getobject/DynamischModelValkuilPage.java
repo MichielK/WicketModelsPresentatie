@@ -12,6 +12,7 @@ import org.apache.wicket.model.IModel;
 import com.google.common.base.Stopwatch;
 
 import nl.topicus.pages.BasePage;
+import nl.topicus.pages.readonly.ReadOnlyModelPage;
 
 public class DynamischModelValkuilPage extends BasePage
 {
@@ -32,6 +33,20 @@ public class DynamischModelValkuilPage extends BasePage
 	{
 		IModel< ? extends List<String>> dynamischModel = this::getStringList;
 
+		// Regel 34 is de verkorte notatie van (functioneel identiek aan):
+		// IModel< ? extends List<String>> dynamischModel = new IModel<List<String>>()
+		// {
+		// 		private static final long serialVersionUID = 1L;
+		//
+		// 		@Override
+		// 		public List<String> getObject()
+		// 		{
+		// 			return getStringList();
+		// 		}
+		// };
+
+		// De simpele oplossing is:
+		// LoadableDetachableModel.of(this::getStringList);
 		add(new ListView<String>("demoListView", dynamischModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -49,14 +64,14 @@ public class DynamischModelValkuilPage extends BasePage
 		Stopwatch stopwatch = Stopwatch.createStarted();
 
 		List<String> list = new ArrayList<>();
-
 		for (int i = 0; i < 11; i++)
 		{
 			doeZwareOperatie();
 			list.add("Nummer " + (i + 1));
 		}
 
-		System.out.println("getObject aangeroepen - duurde ~" + stopwatch.elapsed(TimeUnit.SECONDS) + " seconde(n)");
+		System.out.println("getObject aangeroepen - duurde ~" + stopwatch.elapsed(TimeUnit.SECONDS)
+			+ " seconde(n)");
 		return list;
 	}
 
@@ -78,13 +93,14 @@ public class DynamischModelValkuilPage extends BasePage
 	protected void onDetach()
 	{
 		super.onDetach();
-		System.out.println("Totaal duurde het ~" + stopwatchTotalTime.elapsed(TimeUnit.SECONDS) + " seconden");
+		System.out.println(
+			"Totaal duurde het ~" + stopwatchTotalTime.elapsed(TimeUnit.SECONDS) + " seconden");
 		System.out.println("============");
 	}
 
 	@Override
 	protected Class< ? extends BasePage> getNextPageClass()
 	{
-		return null;
+		return ReadOnlyModelPage.class;
 	}
 }
