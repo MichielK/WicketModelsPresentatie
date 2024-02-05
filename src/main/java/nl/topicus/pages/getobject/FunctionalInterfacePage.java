@@ -1,6 +1,8 @@
 package nl.topicus.pages.getobject;
 
 import java.util.Random;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -10,6 +12,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import nl.topicus.pages.BasePage;
+import nl.topicus.pages.readwrite.Leerling;
 
 public class FunctionalInterfacePage extends BasePage
 {
@@ -38,10 +41,12 @@ public class FunctionalInterfacePage extends BasePage
 
 		// Daarom heeft Java wat "syntactic sugar" toegevoegd om dit wat korter te noteren. Deze
 		// "syntactic sugar" kan op _alle_ functional-interfaces toegepast worden:
-		IModel<String> modelTwo = () -> getRandom();
-		IModel<String> modelThree = this::getRandom;
 
-		// Bovenstaande 3 models werken dus _exact_ hetzelfde.
+		IModel<String> modelTwo = () -> { return getRandom(); };
+		IModel<String> modelThree = () -> getRandom();
+		IModel<String> modelFour = this::getRandom;
+
+		// Bovenstaande 4 models werken dus _exact_ hetzelfde.
 
 		// en door de syntactic sugar is het lastig om het verschil tussen deze 2 te zien en te
 		// snappen - ik hoop dat door de vorige pagina het duidelijk(er) geworden is:
@@ -49,6 +54,10 @@ public class FunctionalInterfacePage extends BasePage
 		add(dynamischLabel = new Label("dynamicLabel", () -> getRandom()));
 
 		addClickBehaviour();
+		
+		// Voorbeeld van een andere functional interface - worden bijvoorbeeld vaak in streams gebruikt:
+		Function<Boolean, String> function = b -> b.toString(); // == return b.toString();
+		Predicate<Leerling> filter = leerling -> leerling != null;
 	}
 
 	private String getRandom()

@@ -21,6 +21,8 @@ public class ReadOnlyModelPage extends BasePage
 		add(form);
 
 		inputModel = () -> "Default waarde";
+		
+		// Juiste model / juiste oplossing:
 		// inputModel = new Model<>("Default waarde");
 
 		form.add(new TextField<>("inputFieldId", inputModel));
