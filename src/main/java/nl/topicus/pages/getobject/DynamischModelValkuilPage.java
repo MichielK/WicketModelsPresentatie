@@ -33,7 +33,7 @@ public class DynamischModelValkuilPage extends BasePage
 	{
 		IModel< ? extends List<String>> dynamischModel = this::getStringList;
 
-		// Regel 34 is de verkorte notatie van (functioneel identiek aan):
+		// Reminder - regel 34 is de verkorte notatie van (functioneel identiek aan):
 		// IModel< ? extends List<String>> dynamischModel = new IModel<List<String>>()
 		// {
 		// 		private static final long serialVersionUID = 1L;
@@ -64,7 +64,9 @@ public class DynamischModelValkuilPage extends BasePage
 		Stopwatch stopwatch = Stopwatch.createStarted();
 
 		List<String> list = new ArrayList<>();
-		for (int i = 0; i < 11; i++)
+
+		// doe 10x een zware operatie van 100ms - dat zou totaal ~1 seconde moeten kosten
+		for (int i = 0; i < 10; i++)
 		{
 			doeZwareOperatie();
 			list.add("Nummer " + (i + 1));
@@ -76,6 +78,7 @@ public class DynamischModelValkuilPage extends BasePage
 	}
 
 	// Simuleer een zware operatie zoals een berekening of een "zware" database-call
+	// duurt ~100 milliseconden
 	private void doeZwareOperatie()
 	{
 		try
@@ -94,7 +97,7 @@ public class DynamischModelValkuilPage extends BasePage
 	{
 		super.onDetach();
 		System.out.println(
-			"Totaal duurde het ~" + stopwatchTotalTime.elapsed(TimeUnit.SECONDS) + " seconden");
+			"Totaal duurde het genereren van de pagina ~" + stopwatchTotalTime.elapsed(TimeUnit.SECONDS) + " seconden");
 		System.out.println("============");
 	}
 

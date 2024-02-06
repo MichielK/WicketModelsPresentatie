@@ -1,6 +1,7 @@
-package nl.topicus.pages.getobject;
+package nl.topicus.pages.statischmodel;
 
 import nl.topicus.pages.BasePage;
+import nl.topicus.pages.getobject.DynamischModelPage;
 
 public class AjaxPauzePage extends BasePage
 {

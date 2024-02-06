@@ -1,4 +1,4 @@
-package nl.topicus.pages.getobject;
+package nl.topicus.pages.statischmodel;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
@@ -19,7 +19,7 @@ public class HomePage extends BasePage
 
 		// de veel gebruikte Label-constructor
 		// new Label("staticModel", "world")
-		// maakt onder water voor jou een (static) model aan
+		// maakt onder water voor jou een (statisch) model aan
 
 		String labelWaarde = "world";
 		IModel<String> labelModel = Model.of(labelWaarde);

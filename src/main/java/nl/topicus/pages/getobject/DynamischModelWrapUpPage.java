@@ -17,9 +17,9 @@ public class DynamischModelWrapUpPage extends BasePage
 	{
 		super.onInitialize();
 
-		// Probeer het maken van een nieuw model door getObject van een ander model aan te roepen te voorkomen
 		IModel<Persoon> persoonModel = this::getPersoon;
 
+		// Probeer het maken van een nieuw model door getObject van een ander model aan te roepen te voorkomen
 		// dus niet:
 		IModel<String> foutNaamModel = new Model<>(persoonModel.getObject().getNaam());
 		IModel<Adres> foutAdresModel = new Model<>(persoonModel.getObject().getAdres());

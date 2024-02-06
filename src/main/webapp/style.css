@@ -87,3 +87,7 @@ body {
 .top100 {	
 	top: 100px;
 }
+
+sub {
+	color: lightgray;
+}

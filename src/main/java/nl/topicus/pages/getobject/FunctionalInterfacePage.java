@@ -9,7 +9,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 import nl.topicus.pages.BasePage;
 import nl.topicus.pages.readwrite.Leerling;
@@ -26,9 +25,9 @@ public class FunctionalInterfacePage extends BasePage
 	{
 		super.onInitialize();
 
-		// Dit is een anonymous-inner-class
+		// Dit noemen we een anonymous-inner-class
 		// Een anonymous-inner-class heeft redelijk veel boilerplate-code
-		IModel<String> modelOne = new Model<String>()
+		IModel<String> modelOne = new IModel<String>()
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -46,7 +45,7 @@ public class FunctionalInterfacePage extends BasePage
 		IModel<String> modelThree = () -> getRandom();
 		IModel<String> modelFour = this::getRandom;
 
-		// Bovenstaande 4 models werken dus _exact_ hetzelfde.
+		// Bovenstaande 4 model-notaties werken dus functioneel _exact_ hetzelfde - zijn 1-op-1 uitwisselbaar
 
 		// en door de syntactic sugar is het lastig om het verschil tussen deze 2 te zien en te
 		// snappen - ik hoop dat door de vorige pagina het duidelijk(er) geworden is:

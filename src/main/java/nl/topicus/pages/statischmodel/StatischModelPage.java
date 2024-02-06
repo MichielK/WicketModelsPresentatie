@@ -1,4 +1,4 @@
-package nl.topicus.pages.getobject;
+package nl.topicus.pages.statischmodel;
 
 import java.util.Random;
 
@@ -27,7 +27,7 @@ public class StatischModelPage extends BasePage
 		add(new Label("staticModel2", new Model<>(random)));
 
 		// Waarom noem ik dit een statisch model? Omdat na het initialiseren van het model de waarde
-		// niet meer wijzigd.
+		// niet meer wijzigt.
 	}
 
 	@Override
